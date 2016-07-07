@@ -26,5 +26,15 @@ namespace DateFantasy.ViewModels
         [Required]
         [AgeRange(18, 120, ErrorMessage = "Your age must be between {1} - {2} in {0}")]
         public DateTime Birthdate { get; set; }
+
+        [Required(ErrorMessage = "{0} must be specified")]
+        public string Gender { get; set; }
+        public string MemberName { get; set; }
+
+        [DisplayName("Sexual Orientation")]
+        [Required]
+        public string Orientation { get; set; }
+
+        public ICollection<PhotoViewModel> Photos { get; set; }
     }
 }
