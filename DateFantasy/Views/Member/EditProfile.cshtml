@@ -1,0 +1,74 @@
+﻿
+@model DateFantasy.ViewModels.EditProfileViewModel
+@{ 
+    ViewBag.Title = "Edit Your Profile";
+}
+
+@section header {
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/js/editprofile-member.js"></script>    
+}
+
+<div class="container">
+    <div class="row">
+        <h1>Edit Your Profile</h1>
+    </div>
+    <div class="row">
+        <form id="profileForm" novalidate action="@Url.Action("EditProfile", "Member")" method="post">
+            <div class="col-lg-10">
+                @Html.ValidationSummary()
+                @Html.HiddenFor(p => p.MemberName)
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Birthdate)
+                        <div class="input-group date">
+                            @Html.LabelFor(p => p.Birthdate, new { @class = "form-control" })
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            @Html.ValidationMessageFor(p => p.Birthdate, "*")
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Gender)
+                        @Html.TextBoxFor(p => p.Gender, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Gender, "*")
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(p => p.Orientation)
+                        @Html.TextBoxFor(p => p.Orientation, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(p => p.Orientation, "*")
+                    </div>
+                </div>
+                <div>
+                    @Html.LabelFor(p => p.LookingFor)
+                    @Html.TextAreaFor(p => p.LookingFor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.LookingFor, "*")
+                </div>
+                <div>
+                    @Html.LabelFor(p => p.Introduction)
+                    @Html.TextAreaFor(p => p.Introduction, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Introduction, "*")
+                </div>
+                <div>
+                    @Html.LabelFor(p => p.Pitch)
+                    @Html.TextAreaFor(p => p.Pitch, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Pitch, "*")
+                </div>
+                <div class="form-group pull-right">
+                    <a href="@Url.Action("EditPhoto", "Member")" class="btn btn-primary">Edit Photo</a>
+                    <a href="@Url.Action("ShowProfile", "Member")" class="btn btn-default">Cancel</a>
+                    <input type="submit" class="btn btn-success" value="Save" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

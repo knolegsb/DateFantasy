@@ -1,0 +1,67 @@
+﻿@model DateFantasy.Entities.Profile
+@using DateFantasy.Extentions
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="will-lg">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>
+                    <strong>@Model.Member.MemberName</strong> (42% Match)
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("EditProfile", "Member")" class="btn btn-success btn-sm">Edit My Profile</a>
+                    }
+                </h2>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="@(Model.Photos.First(p => p.IsMain).Url)" alt="@Model.Member.MemberName" class="img-responsive img-thumbnail" />
+                <a href="@Url.Action("Contact", "Member")" class="btn btn-success col-lg-12">Contact Them!</a>
+            </div>
+            <div class="col-lg-6">
+                <h3>Pitch:</h3>
+                <p>@Model.Pitch</p>
+                <h3>Looking For:</h3>
+                <p>@Model.LookingFor</p>
+                <h3>Introduction</h3>
+                @foreach (var line in Model.Introduction.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <p>@line</p>
+                }
+            </div>
+            <div class="col-lg-3">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">About AwkwardGuy</div>
+                    <div class="panel-body">
+                        <dl>
+                            <dt>Age:</dt>
+                            <dd>@Model.Demographics.Birthdate.CalculateAge()</dd>
+                            <dt>Lives in:</dt>
+                            <dd>@Model.Demographics.CityTown</dd>
+                            <dt>Gender:</dt>
+                            <dd>@Model.Demographics.Gender</dd>
+                            <dt>Orientation:</dt>
+                            <dd>@Model.Demographics.Orientation</dd>
+                            <dt>Last Logged On:</dt>
+                            <dd>@Model.Member.LastLogin.ToShortDateString()</dd>
+                        </dl>
+                        <h3>Interests</h3>
+                        <ul class="list-unstyled">
+                            @foreach (var i in Model.Interests)
+                            {
+                                <li>@i.InterestType.Name</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
