@@ -39,7 +39,7 @@ namespace DateFantasy.Controllers
             return View();
         }
 
-        public ActionResult Acknowlegements()
+        public ActionResult Acknowledgements()
         {
             return View();
         }

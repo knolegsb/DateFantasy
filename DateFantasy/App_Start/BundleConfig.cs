@@ -22,6 +22,10 @@ namespace DateFantasy
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/theme/css/prettyPhoto.css",
+                      "~/Content/theme/css/font-awesome.min.css",
+                      "~/Content/theme/css/red.css",
+                      "~/Content/theme/css/style.css",
                       "~/Content/site.css"));
         }
     }

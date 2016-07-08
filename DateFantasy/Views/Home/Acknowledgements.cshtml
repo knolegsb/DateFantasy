@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Acknowledgements";
+    var photos = new[]
+    {
+      new { user = "redleatherphoto", photo = "4740896719", title = "Knife", author = "Keith Gass" },
+      new { user = "jurvetson", photo = "9447071887", title = "Happy Birthday Neil Armstrong", author = "Steve Jurvetson" },
+      new { user = "doctabu", photo = "342220423", title = "I'm confused", author = "Brian Moore" },
+      new { user = "wmjas", photo = "51122782", title = "Ugly shirt", author = "Wm Jas" },
+      new { user = "hollylay", photo = "5702496380", title = "day 007.", author = "Holly Lay" },
+      new { user = "a2gemma", photo = "320660919", title = "Making Faces", author = "a2gemma" },
+      new { user = "revdave", photo = "381072472", title = "Scary", author = "David Morris" },
+      new { user = "gluglondon", photo = "4681727252", title = "Glug@Cargo (5 of 23)", author = "Glug Events" },
+      new { user = "vithassan", photo = "3505239856", title = "-Emo-", author = "Vít Hassan" },
+      new { user = "gowster", photo = "2716843640", title = "Untitled", author = "Jesus Galiazzo" },
+    };
+}
+
+<div class="container">
+    <div class="row">
+        <div class="well-lg">
+            <div class="col-lg-12">
+                <h2>Photo Credits</h2>
+                <dl class="dl-horizontal">
+                    @foreach(var photo in photos)
+                    {
+                        <dt><a href="https://www.flickr.com/photos/@photo.user/@photo.photo">@photo.title</a></dt>
+                        <dd>By <a href="https://www.flickr.com/photos/@photo.user/">@photo.author</a>Is licensed under <a href="http://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></dd>
+                    }
+                </dl>
+                <h2>Date Supplier</h2>
+                <p><a href="http://datefantasy.com">Online Dating Fantasy</a></p>
+            </div>
+        </div>
+    </div>
+</div>
